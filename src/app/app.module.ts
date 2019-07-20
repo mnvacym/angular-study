@@ -13,6 +13,9 @@ import { AppErrorHandler } from './common/errors/app-error-handler';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { GithubFollowersComponent } from './components/github-followers/github-followers.component';
+import { GithubProfileComponent } from './components/github-profile/github-profile.component';
+import { GithubFollowersService } from './services/GithubFollowers/github-followers.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomeComponent,
     NotFoundComponent,
     NavbarComponent,
+    GithubFollowersComponent,
+    GithubProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,11 +40,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
       { path: '', component: HomeComponent },
       { path: 'signup', component: SignupFormComponent },
       { path: 'posts', component: PostsComponent },
+      { path: 'followers/:userId', component: GithubProfileComponent },
+      { path: 'followers', component: GithubFollowersComponent },
       { path: '**', component: NotFoundComponent },
     ]),
   ],
   providers: [
     PostService,
+    GithubFollowersService,
     // we tell angular to use AppErrorHandler instead of default ErrorHandler
     { provide: ErrorHandler, useClass: AppErrorHandler },
   ],
