@@ -3,14 +3,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsernameValidators } from './validators/username.validators';
 
 @Component({
-  selector: 'signup-form',
+  selector: 'reactive-forms',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.css'],
 })
 export class SignupFormComponent {
   // reactive forms & nested groups & validators
   form = new FormGroup({
-    account: new FormGroup({ 
+    account: new FormGroup({
       username: new FormControl(
         '',
         [Validators.required, Validators.minLength(3), UsernameValidators.cannotContainSpace],

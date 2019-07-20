@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -9,9 +10,19 @@ import { SignupFormComponent } from './components/signup/signup-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostService } from './services/post/post.service';
 import { AppErrorHandler } from './common/errors/app-error-handler';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupFormComponent, PostsComponent],
+  declarations: [
+    AppComponent,
+    SignupFormComponent,
+    PostsComponent,
+    HomeComponent,
+    NotFoundComponent,
+    NavbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +30,13 @@ import { AppErrorHandler } from './common/errors/app-error-handler';
     ReactiveFormsModule,
     // http services
     HttpModule,
+    // Router & Navigation
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'signup', component: SignupFormComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: '**', component: NotFoundComponent },
+    ]),
   ],
   providers: [
     PostService,

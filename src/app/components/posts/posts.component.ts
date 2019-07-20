@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
-  selector: 'app-posts',
+  selector: 'http-data-services',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
 })
